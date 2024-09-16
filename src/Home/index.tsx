@@ -19,20 +19,21 @@ export default function Home () {
                 />
             </MapView>
 
-            <View>
+            <View style={styles.categoryContainer}>
                 <FlatList
                 data={categories}
                 horizontal
                 showsHorizontalScrollIndicator={false}
+                ItemSeparatorComponent={() => <View style={{width: 10}}/>}
                 contentContainerStyle={{
                     alignItems: 'center'
                 }}
                 renderItem={({ item }) => (
-                    <TouchableOpacity
+                    <TouchableOpacity style={styles.categoryItem}
                     key={item.key}
                     >
-                        <Image source={item.image} />
-                        <Text>{item.label}</Text>
+                        <Image style={styles.categyImage} source={item.image} />
+                        <Text style={styles.categoryText}>{item.label}</Text>
 
                     </TouchableOpacity>
                 )}
@@ -64,6 +65,25 @@ const styles = StyleSheet.create({
     map: {
         flex: 1,
         backgroundColor: '#ffff'
+    },
+    categoryContainer: {
+        padding: 10,
+    },
+    categoryItem: {
+        height: 110,
+        backgroundColor: '#f0f0f5',
+        width: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10
+    },
+    categyImage:{
+        width: 50,
+        height: 50
+    },
+    categoryText:{
+        textAlign: 'center',
+        color: '#6c6c80'
     }
 
 });
